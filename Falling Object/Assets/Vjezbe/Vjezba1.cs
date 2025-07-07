@@ -1,12 +1,19 @@
+using TMPro;
 using UnityEngine;
 
 public class Vjezba1 : MonoBehaviour
 {
-    [SerializeField] private float score = 0;
+     private int score = 0;
+    [SerializeField] private TMP_Text scoreText;
 
-    public void AddScore(float amount)
+    private void Start()
+    {
+        scoreText.text = score.ToString();
+    }
+    public void AddScore(int amount)
     {
         score += amount;
+        scoreText.text = score.ToString();
     }
 
 }

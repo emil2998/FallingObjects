@@ -1,10 +1,12 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private Vjezba1_1[] prefab;
 
+   
     private int RandomIndex()
     {
         int randomIndex = Random.Range(0, prefab.Length);

@@ -1,4 +1,5 @@
 
+
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -15,24 +16,20 @@ public class PlayerMovement : MonoBehaviour
         rb.linearVelocity = Vector3.zero;
         if (Input.GetKey(KeyCode.A) && transform.position.x > -7)
         {
-            MovePlayerLeft();
+            MovePlayer(Vector2.left);
         }
         
         if (Input.GetKey(KeyCode.D) && transform.position.x < 7)
         {
-            MovePlayerRight();
+            MovePlayer(Vector2.right);
         }
         
     }
 
-    private void MovePlayerRight()
+    private void MovePlayer(Vector2 direction)
     {
-        //rb.linearVelocity = speed * Time.deltaTime * Vector2.right;
-        rb.linearVelocity = Vector2.Lerp(rb.linearVelocity, Vector2.right *  speed, 10 * Time.deltaTime);
-    }
-    private void MovePlayerLeft()
-    {
-        // rb.linearVelocity = speed * Time.deltaTime * Vector2.left;
-        rb.linearVelocity = Vector2.Lerp(rb.linearVelocity, Vector2.left * speed, 10 * Time.deltaTime);
+        direction.Normalize();
+        Vector2 targetVelocity = direction * speed;
+        rb.linearVelocity = Vector2.Lerp(rb.linearVelocity, targetVelocity, 10 * Time.deltaTime);
     }
 }

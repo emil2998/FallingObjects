@@ -5,7 +5,8 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private Vjezba1_1[] prefab;
-
+    [SerializeField] private float rangeXMin = -3.1f;
+    [SerializeField] private float rangeXMax =  3.1f;
    
     private int RandomIndex()
     {
@@ -29,12 +30,12 @@ public class GameManager : MonoBehaviour
     }
     private float RandomDistanceX()
     {
-        return Random.Range(-7, 8);
+        return Random.Range(rangeXMin, rangeXMax);
     }
     private void Instantiate()
     {
         
-        Instantiate(prefab[RandomIndex()], new Vector3(RandomDistanceX(), 8f,0), Quaternion.identity);
+        Instantiate(prefab[RandomIndex()], new Vector3(RandomDistanceX(), 6f,-6f), Quaternion.identity);
     }
 
 }

@@ -69,10 +69,10 @@ PrefabInstance:
       addedObject: {fileID: 3862267353438507849}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 824fe0aa3bf361b4bbd59ae6f27b2f1f, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1851583517439049965}
+      addedObject: {fileID: 3147696237680578063}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 824fe0aa3bf361b4bbd59ae6f27b2f1f, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 3147696237680578063}
+      addedObject: {fileID: 5514540755224765724}
   m_SourcePrefab: {fileID: 100100000, guid: 824fe0aa3bf361b4bbd59ae6f27b2f1f, type: 3}
 --- !u!1 &3016084743310698214 stripped
 GameObject:
@@ -100,19 +100,6 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.15992919
   m_Center: {x: -0.000000014901161, y: 0, z: -0.00025900453}
---- !u!114 &1851583517439049965
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3016084743310698214}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81cbd9e01716b1848b79e28939012777, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scoreAmount: 5
 --- !u!54 &3147696237680578063
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -140,3 +127,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 120
   m_CollisionDetection: 0
+--- !u!114 &5514540755224765724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3016084743310698214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2b116094739cf345b4af12cf1cc5491, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreAmount: 5

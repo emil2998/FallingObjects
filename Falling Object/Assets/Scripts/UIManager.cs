@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -36,15 +37,31 @@ public class UIManager : MonoBehaviour
         options.onClick.AddListener(OptionsBtn);
         exit.onClick.AddListener(ExitGame);
         mainMenuGameOver.onClick.AddListener(ReturnToMainMenu);
+        playAgain.onClick.AddListener(PlayGameBtn);
+
+        mainMenuGameOver.interactable = false;
+        playAgain.interactable = false;
 
     }
 
     private void Update()
     {
+        if (!gameManager.canPlay)
+        {
+            return;
+
+        }
         if (Input.GetKeyDown(KeyCode.P))
         {
             PauseUnpauseGame();
         }
+    }
+
+    private IEnumerator ShortDelay()
+    {
+        yield return new WaitForSecondsRealtime(1);
+        mainMenuGameOver.interactable = true;
+        playAgain.interactable = true;
     }
 
 
@@ -59,11 +76,13 @@ public class UIManager : MonoBehaviour
         Time.timeScale = 10.0f;
         gameManager.canPlay = false;
         gameOverPanel.SetActive(true);
+        StartCoroutine(ShortDelay());
     }
     private void PlayGameBtn()
     {
         Time.timeScale = 1.0f;
         mainMenuPanel.SetActive(false);
+        gameOverPanel.SetActive(false);
         inGamePanel.SetActive(true);
         gameManager.canPlay = true;
         gameManager.StartGame();

@@ -533,6 +533,7 @@ MonoBehaviour:
   rangeXMin: -3
   rangeXMax: 3
   uiManager: {fileID: 416611273}
+  playerCharacter: {fileID: 4109859303688779012}
   canPlay: 0
 --- !u!114 &416611273
 MonoBehaviour:

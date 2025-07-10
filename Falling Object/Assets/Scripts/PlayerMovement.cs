@@ -14,6 +14,10 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         rb.linearVelocity = Vector3.zero;
+        if (!gameManager.canPlay)
+        {
+            return;
+        }
         if (Input.GetKey(KeyCode.A) && transform.position.x > -7)
         {
             MovePlayer(Vector2.left);

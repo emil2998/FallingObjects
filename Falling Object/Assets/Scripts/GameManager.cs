@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float rangeXMax = 3.1f;
 
     [SerializeField] private UIManager uiManager;
+    [SerializeField] private PlayerMovement playerCharacter;
     private int score = 0;
     private int maxLives = 3;
     private int currentLives = 0;
@@ -39,6 +40,7 @@ public class GameManager : MonoBehaviour
         livesCounter = 0;
         uiManager.RefreshUILives(currentLives);
         uiManager.RefreshUIScore(score);
+        playerCharacter.transform.position = new Vector3(0f, playerCharacter.transform.position.y,playerCharacter.transform.position.z);
     }
 
     public void StartGame()
@@ -91,6 +93,7 @@ public class GameManager : MonoBehaviour
         {
             currentLives = 0;
             uiManager.GameOver();
+            canPlay = false;
         }
         uiManager.RefreshUILives(currentLives);
     }

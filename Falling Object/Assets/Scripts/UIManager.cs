@@ -14,6 +14,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject optionsPanel;
     [SerializeField] private GameObject inGamePanel;
     [SerializeField] private GameObject pausePanel;
+    [SerializeField] private GameObject creditsPanel;
 
     [SerializeField] private GameObject gameOverPanel;
 
@@ -21,7 +22,10 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Button options;
     [SerializeField] private Button exit;
     [SerializeField] private Button mainMenuGameOver;
+    [SerializeField] private Button mainMenuOptions;
+    [SerializeField] private Button mainMenuCredits;
     [SerializeField] private Button playAgain;
+    [SerializeField] private Button credits;
 
      private GameManager gameManager;
 
@@ -32,13 +36,16 @@ public class UIManager : MonoBehaviour
         optionsPanel.SetActive(false);
         inGamePanel.SetActive(false);
         pausePanel.SetActive(false);
+        creditsPanel.SetActive(false);
 
         play.onClick.AddListener(PlayGameBtn);
         options.onClick.AddListener(OptionsBtn);
         exit.onClick.AddListener(ExitGame);
         mainMenuGameOver.onClick.AddListener(ReturnToMainMenu);
+        mainMenuOptions.onClick.AddListener(ReturnToMainMenu);
+        mainMenuCredits.onClick.AddListener(ReturnToMainMenu);
         playAgain.onClick.AddListener(PlayGameBtn);
-
+        credits.onClick.AddListener(Credits);
         mainMenuGameOver.interactable = false;
         playAgain.interactable = false;
 
@@ -46,6 +53,10 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            GameOver();
+        }
         if (!gameManager.canPlay)
         {
             return;
@@ -57,9 +68,15 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    private void Credits()
+    {
+        mainMenuPanel.SetActive(false);
+        creditsPanel.SetActive(true);
+    }
+
     private IEnumerator ShortDelay()
     {
-        yield return new WaitForSecondsRealtime(1);
+        yield return new WaitForSecondsRealtime(2);
         mainMenuGameOver.interactable = true;
         playAgain.interactable = true;
     }
@@ -68,7 +85,11 @@ public class UIManager : MonoBehaviour
     private void ReturnToMainMenu()
     {
         mainMenuPanel.SetActive(true);
-        gameOverPanel.SetActive(false);    
+        optionsPanel.SetActive(false);
+        gameOverPanel.SetActive(false);
+        creditsPanel.SetActive(false);
+        mainMenuGameOver.interactable = false;
+        playAgain.interactable= false;
     }
 
     public void GameOver()
@@ -86,6 +107,8 @@ public class UIManager : MonoBehaviour
         inGamePanel.SetActive(true);
         gameManager.canPlay = true;
         gameManager.StartGame();
+        playAgain.interactable = false;
+        mainMenuGameOver.interactable = false;
     }
 
     private void PauseUnpauseGame()
@@ -124,11 +147,11 @@ public class UIManager : MonoBehaviour
     }
     public void RefreshUIScore(int score)
     {
-        scoreText.text = "Score: " + score.ToString();
+        scoreText.text = "SCORE: " + score.ToString();
     }
     public void RefreshUILives(int currentLives)
     {
-        livesText.text = "Lives: " + currentLives.ToString();
+        livesText.text = "LIVES: " + currentLives.ToString();
     }
 
 

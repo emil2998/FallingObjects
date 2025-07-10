@@ -11,7 +11,9 @@ public class FallingObject : MonoBehaviour
         {
             player.ScoreChange(scoreAmount);
             if (scoreAmount < 0) { 
+                player.PlayExplosionSound();
                 player.LoseLiveCounter();
+                player.LoseLiveByPickingUpWrongItem();
             }
             else if (scoreAmount>0)
             {

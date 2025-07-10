@@ -62,7 +62,7 @@ public class GameManager : MonoBehaviour
     public void AddLivesCounter()
     {
         livesCounter++;
-        Debug.Log("add counter");
+       
         if (livesCounter >= 10)
         {
             AddLife();
@@ -72,7 +72,6 @@ public class GameManager : MonoBehaviour
     public void SubstractLivesCounter()
     {
         livesCounter--;
-        Debug.Log("sub counter");
         if (livesCounter <= 0) { livesCounter = 0; }
     }
 

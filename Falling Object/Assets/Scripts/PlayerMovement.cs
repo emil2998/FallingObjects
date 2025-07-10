@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody rb;
     private readonly float speed = 30f;
     [SerializeField] private GameManager gameManager;
+    [SerializeField] private AudioManager audioManager;
     private void Awake()
     {
         rb = this.GetComponent<Rigidbody>();
@@ -28,6 +29,16 @@ public class PlayerMovement : MonoBehaviour
             MovePlayer(Vector2.right);
         }
         
+    }
+
+    public void LoseLiveByPickingUpWrongItem() {
+
+        gameManager.ReduceLife();
+    }
+
+    public void PlayExplosionSound()
+    {
+        audioManager.PlayExplosion();
     }
 
     public void LivesCounterUpdate()

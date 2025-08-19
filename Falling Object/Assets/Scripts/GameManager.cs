@@ -1,5 +1,4 @@
 using System.Collections;
-
 using UnityEngine;
 
 
@@ -25,12 +24,9 @@ public class GameManager : MonoBehaviour
     }
 
     private void Start()
-    {
-
+    {    
         currentLives = maxLives;
         uiManager.RefreshUILives(currentLives);
-
-
     }
 
     private void ResetGame()

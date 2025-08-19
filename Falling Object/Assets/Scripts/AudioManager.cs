@@ -6,12 +6,14 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioSource asBackgroundMusic;
     [SerializeField] private AudioSource asItemExplode;
     [SerializeField] private AudioClip[] audioClips;
-    [SerializeField] private Slider volumeSlider;
+
+    
+    //[SerializeField] private Slider volumeSlider;
 
     private void Awake()
     {
-        volumeSlider.onValueChanged.AddListener(ChangeVolume);
-        volumeSlider.value = asBackgroundMusic.volume;
+       // volumeSlider.onValueChanged.AddListener(ChangeVolume);
+       // volumeSlider.value = asBackgroundMusic.volume;
         PlayInGameMusic();
     }
     private void PlayInGameMusic()
